@@ -33,6 +33,18 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend",
+        policy => policy
+            .WithOrigins("http://localhost:62059") // sesuai dengan PORT react yang sedang di jalankan 
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+    );
+});
+
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
@@ -81,6 +93,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowFrontend");
 
 app.UseAuthentication();
 
