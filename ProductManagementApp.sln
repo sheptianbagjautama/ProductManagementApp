@@ -5,6 +5,8 @@ VisualStudioVersion = 17.13.35806.99 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductManagementApp.API", "ProductManagementApp.API\ProductManagementApp.API.csproj", "{14A0B8AA-8021-458D-BD33-D54F49A6C535}"
 EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "productmanagementapp.frontend", "ProductManagementApp.Frontend\productmanagementapp.frontend.esproj", "{455BAD7C-7DE4-D604-B80C-0D04DE18DE71}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,12 @@ Global
 		{14A0B8AA-8021-458D-BD33-D54F49A6C535}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14A0B8AA-8021-458D-BD33-D54F49A6C535}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14A0B8AA-8021-458D-BD33-D54F49A6C535}.Release|Any CPU.Build.0 = Release|Any CPU
+		{455BAD7C-7DE4-D604-B80C-0D04DE18DE71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{455BAD7C-7DE4-D604-B80C-0D04DE18DE71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{455BAD7C-7DE4-D604-B80C-0D04DE18DE71}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{455BAD7C-7DE4-D604-B80C-0D04DE18DE71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{455BAD7C-7DE4-D604-B80C-0D04DE18DE71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{455BAD7C-7DE4-D604-B80C-0D04DE18DE71}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
