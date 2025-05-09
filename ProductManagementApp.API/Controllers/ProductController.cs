@@ -6,8 +6,9 @@ using ProductManagementApp.API.Repositories.Interfaces;
 
 namespace ProductManagementApp.API.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
+    [ApiController]
     public class ProductController : ControllerBase
     {
         private readonly IProductRepository _repository;
@@ -18,7 +19,6 @@ namespace ProductManagementApp.API.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
         public async Task<IActionResult> GetAll([FromQuery] string? name, [FromQuery] decimal? minPrice, [FromQuery] decimal? maxPrice)
         {
             var products = await _repository.GetAllAsync(name, minPrice, maxPrice);
