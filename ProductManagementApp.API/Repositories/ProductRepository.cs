@@ -32,20 +32,58 @@ namespace ProductManagementApp.API.Repositories
 
         public async Task<Product?> GetByIdAsync(int id) => await _context.Products.FindAsync(id);
 
-        public async Task AddAsync(Product product) => await _context.Products.AddAsync(product);
-
-        public Task UpdateAsync(Product product)
+        public async Task AddAsync(Product product)
         {
-            _context.Products.Update(product);
-            return Task.CompletedTask;
+            using var transaction = await _context.Database.BeginTransactionAsync();
+
+            try
+            {
+                await _context.Products.AddAsync(product);
+                await _context.SaveChangesAsync();
+
+                await transaction.CommitAsync();
+            }
+            catch (Exception)
+            {
+                await transaction.RollbackAsync();
+                throw;
+            }
         }
 
-        public Task DeleteAsync(Product product)
+        public async Task UpdateAsync(Product product)
         {
-            _context.Products.Remove(product);
-            return Task.CompletedTask;
+            using var transaction = await _context.Database.BeginTransactionAsync();
+
+            try
+            {
+                _context.Products.Update(product);
+                await _context.SaveChangesAsync();
+
+                await transaction.CommitAsync();
+            }
+            catch (Exception)
+            {
+                await transaction.RollbackAsync();
+                throw;
+            }
         }
 
-        public async Task<bool> SaveChangesAsync() => await _context.SaveChangesAsync() > 0;
+        public async Task DeleteAsync(Product product)
+        {
+            using var transaction = await _context.Database.BeginTransactionAsync();
+
+            try
+            {
+                _context.Products.Remove(product);
+                await _context.SaveChangesAsync();
+
+                await transaction.CommitAsync();
+            }
+            catch (Exception)
+            {
+                await transaction.RollbackAsync();
+                throw;
+            }
+        }
     }
 }

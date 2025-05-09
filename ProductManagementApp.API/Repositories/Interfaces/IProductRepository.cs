@@ -9,6 +9,5 @@ namespace ProductManagementApp.API.Repositories.Interfaces
         Task AddAsync(Product product);
         Task UpdateAsync(Product product);
         Task DeleteAsync(Product product);
-        Task<bool> SaveChangesAsync();
     }
 }
